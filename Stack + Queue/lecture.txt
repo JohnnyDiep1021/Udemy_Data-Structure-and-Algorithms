@@ -1,0 +1,8 @@
+Stacks
+
+Arrays
+Cache Locality makes their operation faster when accessing its items in memory
+certain amount of memory, size or memory may get double when growing
+
+Linked Lists
+Dynamic memory, sufficient memory usage

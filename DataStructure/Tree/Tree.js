@@ -150,13 +150,105 @@ class BinarySearchTree {
       }
     }
   }
+  breadFistSearch() {
+    let currentNode = this.root;
+    let list = [];
+    // To keep track of the level we're at so that we can access the children.
+    let queue = []; // memory can grow quickly
+    queue.push(currentNode);
+    while (queue.length > 0) {
+      currentNode = queue.shift();
+      console.log(currentNode.data);
+      list.push(currentNode.data);
+      if (currentNode.left) {
+        queue.push(currentNode.left);
+      }
+      if (currentNode.right) {
+        queue.push(currentNode.right);
+      }
+    }
+    return list;
+  }
+  breadFistSearchRecursive(queue, list) {
+    // base length
+    if (!queue.length) {
+      return list;
+    }
+    let currentNode = queue.shift();
+    list.push(currentNode.data);
+    if (currentNode.left) {
+      queue.push(currentNode.left);
+    }
+    if (currentNode.right) {
+      queue.push(currentNode.right);
+    }
+    // recursive call
+    return this.breadFistSearchRecursive(queue, list);
+  }
+  DFSInorder() {
+    return traverseInOrder(this.root, []);
+  }
+  DFSPostorder() {
+    return traversePostOrder(this.root, []);
+  }
+  DFSPreorder() {
+    return traversePreOrder(this.root, []);
+  }
 }
+
+function traverseInOrder(node, list) {
+  // console.log(node.data);
+  // check the left node
+  if (node.left) {
+    traverseInOrder(node.left, list);
+  }
+  list.push(node.data);
+  // check the right node
+  if (node.right) {
+    traverseInOrder(node.right, list);
+  }
+  return list;
+}
+function traversePreOrder(node, list) {
+  // console.log(node.data);
+  list.push(node.data);
+  // check the left node
+  if (node.left) {
+    traversePreOrder(node.left, list);
+  }
+  // check the right node
+  if (node.right) {
+    traversePreOrder(node.right, list);
+  }
+  return list;
+}
+function traversePostOrder(node, list) {
+  // console.log(node.data);
+  // check the left node
+  if (node.left) {
+    traversePostOrder(node.left, list);
+  }
+  // check the right node
+  if (node.right) {
+    traversePostOrder(node.right, list);
+  }
+  list.push(node.data);
+  return list;
+}
+
 function traverse(node) {
   const tree = { data: node.data };
   tree.left = node.left === null ? null : traverse(node.left);
   tree.right = node.right === null ? null : traverse(node.right);
   return tree;
 }
+//      9
+//  4       20
+//1   6  15   170
+
+// Inorder - [1, 4, 6, 9, 15, 20, 170]
+// Preorder - [9, 4, 1, 6, 20, 15, 170]
+// Postorder - [1, 6, 4, 15, 170, 20, 9]
 const tree = new BinarySearchTree();
 tree.insert(9);
 tree.insert(4);
@@ -165,10 +257,15 @@ tree.insert(20);
 tree.insert(170);
 tree.insert(15);
 tree.insert(1);
-console.log(tree.lookup(4));
-console.log(tree.lookup(20));
-console.log(tree.lookup(15));
-console.log(tree.lookup(1));
-console.log(tree.lookup(156));
-console.log(tree.remove(170));
+console.log(tree.DFSInorder());
+console.log(tree.DFSPreorder());
+console.log(tree.DFSPostorder());
+// console.log(tree.breadFistSearch());
+// console.log(tree.breadFistSearchRecursive([tree.root], []));
+// console.log(tree.lookup(4));
+// console.log(tree.lookup(20));
+// console.log(tree.lookup(15));
+// console.log(tree.lookup(1));
+// console.log(tree.lookup(156));
+// console.log(tree.remove(170));
 fs.writeFileSync("BST.json", JSON.stringify(traverse(tree.root)));

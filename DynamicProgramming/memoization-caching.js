@@ -2,6 +2,8 @@
 
 // Dynamic programming is an optimization technique and a way to solve problems by breaking them down into a collection of sub-problems, solving each of those problems just once, and storing their solutions in the cache
 
+// Dynamic programming and memoization are great techniques breaking up complex recursive problems into smaller chunks. They are especially useful when tackling problems that involve combinations.
+
 function memoizedAddTo80() {
   let cache = {};
   // closure

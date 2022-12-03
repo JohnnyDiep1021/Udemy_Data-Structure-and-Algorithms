@@ -1,5 +1,5 @@
 const { Node } = require("./Node");
-class SinglyLinkedList {
+class LinkedList {
   constructor() {
     this.head = null;
   }
@@ -58,7 +58,7 @@ function reverseLinkedList(node) {
   node._next = null;
   return reverse;
 }
-// const newSLL = new SinglyLinkedList();
+// const newSLL = new LinkedList();
 // newSLL.prepend(`Canada`);
 // newSLL.prepend(`USA`);
 // newSLL.prepend(`Rusia`);
@@ -170,23 +170,116 @@ class DoublyLinkedList {
     console.log(output);
   }
 }
-const newDLL = new DoublyLinkedList();
-newDLL.prepend("Lawrence");
-newDLL.prepend("North-York");
-newDLL.prepend("Finch");
-newDLL.append("Sheppard-Yonge");
-newDLL.append("King");
-newDLL.print();
-console.log(`----------------------`);
+// const subway = new DoublyLinkedList();
+// subway.prepend("Lawrence");
+// subway.prepend("North-York");
+// subway.prepend("Finch");
+// subway.append("Sheppard-Yonge");
+// subway.append("King");
+// subway.print();
+// console.log(`----------------------`);
+// console.log(subway.removeByData("Lawrence").data);
+// subway.print();
+// console.log(subway.removeByData("Finch").data);
+// subway.print();
+// console.log(subway.removeByData("King").data);
+// subway.print();
+// console.log(subway.removeByData("Sheppard-Yonge").data);
+// subway.print();
+// console.log(subway.removeByData("North-York").data);
+// subway.print();
+// console.log(subway.removeByData("finch"));
 
-console.log(newDLL.removeByData("Lawrence").data);
-newDLL.print();
-console.log(newDLL.removeByData("Finch").data);
-newDLL.print();
-console.log(newDLL.removeByData("King").data);
-newDLL.print();
-console.log(newDLL.removeByData("Sheppard-Yonge").data);
-newDLL.print();
-console.log(newDLL.removeByData("North-York").data);
-newDLL.print();
-console.log(newDLL.removeByData("finch"));
+class Queue {
+  constructor() {
+    this.first = null;
+    this.last = null;
+    this.length = 0;
+  }
+  enqueue(value) {
+    const newNode = new Node(value);
+    if (this.length === 0) {
+      this.first = newNode;
+      this.last = newNode;
+    }
+    if (this.last) {
+      this.last.setNextNode(newNode);
+      this.last = newNode;
+    }
+    this.length++;
+    return this;
+  }
+  dequeue() {
+    if (!this.first) {
+      return null;
+    }
+    if (this.first === this.last) {
+      this.last = null;
+    }
+    this.first = this.first.getNextNode();
+    this.length--;
+    return this;
+  }
+  peek() {
+    return this.first;
+  }
+}
+// const myQueue = new Queue();
+// console.log(myQueue.enqueue(`Joy`));
+// console.log(myQueue.enqueue(`Matt`));
+// console.log(myQueue.enqueue(`Pavel`));
+// console.log(myQueue.enqueue(`Samir`));
+// console.log(myQueue.peek());
+// console.log(myQueue.dequeue());
+// console.log(myQueue.dequeue());
+// console.log(myQueue.dequeue());
+// console.log(myQueue.dequeue());
+
+class Stack {
+  constructor() {
+    this.top = null;
+    this.bottom = null;
+    this.length = 0;
+  }
+  push(value) {
+    const newNode = new Node(value);
+    if (this.length === 0) {
+      this.top = newNode;
+      this.bottom = newNode;
+    } else {
+      const holdingPointer = this.top;
+      this.top = newNode;
+      this.top.setNextNode(holdingPointer);
+    }
+    this.length++;
+    return this;
+  }
+  pop() {
+    if (!this.top) {
+      return null;
+    }
+    if (this.top === this.bottom) {
+      this.bottom = null;
+    }
+    const holdingPointer = this.top;
+    this.top = this.top.getNextNode();
+    this.length--;
+    return holdingPointer;
+  }
+  peek() {
+    return this.top;
+  }
+}
+
+// const myStack = new Stack();
+// console.log(myStack.push("Google"));
+// console.log(myStack.push("Udemy"));
+// console.log(myStack.push("Discord"));
+// console.log(myStack.peek());
+// console.log(myStack.pop());
+// console.log(myStack.pop());
+// console.log(myStack);
+
+module.exports = {
+  LinkedList,
+};

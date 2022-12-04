@@ -70,7 +70,7 @@ hashTable.assign("pizza", 20);
 hashTable.assign("squid", 10);
 hashTable.assign("guava", 5);
 hashTable.assign("shrimp", 15);
-// console.log(hashTable.hashmap);
+console.log(hashTable.hashmap);
 console.log(hashTable.retrieve("burger"));
 console.log(hashTable.retrieve("squid"));
 console.log(hashTable.retrieve("guava"));

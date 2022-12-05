@@ -133,7 +133,3 @@ class HashTable {
 // console.log(hashTable.retrieve("watermelon"));
 // console.log(hashTable.retrieve("durian"));
 // console.log(hashTable.retrieve("strawberry"));
-
-class Tree {
-  constructor() {}
-}

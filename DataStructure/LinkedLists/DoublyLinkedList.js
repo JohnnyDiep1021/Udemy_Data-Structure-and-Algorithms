@@ -1,3 +1,21 @@
+/*
+Doubly Linked Lists
+
+Prepend: O(1)
+Append: O(1)
+Lookup: O(n)Insert: O(n)
+Delete: O(n)
+
+Pros
++ Fast insertion
++ Fast deletion
++ Ordered
++ Flexible size
+
+cons
++ Slow lookup
++ More memory
+*/
 // add a method remove() to the linked list that deletes a node to the specified index.
 
 class LinkedList {

@@ -1,3 +1,17 @@
+/*
+Arrays
+
+Pros:
++ Fast lookups
++ Fash push/ pop
++ Ordered
+
+Cons:
++ Slow inserts
++ Slow deletes
++ Fixed size (if using static array)
+*/
+
 function mergeSortedArrays(arr1, arr2) {
   if (typeof arr1 !== "object" || typeof arr2 !== "object") {
     return [];

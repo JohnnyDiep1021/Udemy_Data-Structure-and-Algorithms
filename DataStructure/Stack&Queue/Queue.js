@@ -1,3 +1,14 @@
+/*
+Stacks + Queues
+
+Pros
+Fast operations (enqueue, dequeue, push, pop)
+Fast peek
+Ordered
+
+Cons
+Slow lookup
+*/
 class Node {
   constructor(value) {
     this.value = value;

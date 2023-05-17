@@ -1,3 +1,28 @@
+/*
+Arrays
++ search: O(n)
++ lookup O(1)
++ push O(1)
++ insert O(n)
++ delete O(n)
+
+Hash tables
++ search: O(1)
++ lookup O(1)
++ insert O(1)
++ delete O(1)
+
+Hashed tables
+
+Pros
++ Fast lookups
++ Fast inserts
++ Flexible keys
+
+Cons:
++ Unordered
++ Slow key iteration
+*/
 class HashTable {
   constructor(size = 0) {
     this.hashmap = new Array(size).fill(null);
